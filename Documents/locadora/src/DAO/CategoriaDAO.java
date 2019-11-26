@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package principal;
+package DAO;
 
-
-public class main {
-   public static void main(String[]args){
-   new Login().setVisible(true); 
-   }     
+/**
+ *
+ * @author Eduarda
+ */
+public class CategoriaDAO {
+    
 }
-
