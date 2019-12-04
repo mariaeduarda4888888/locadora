@@ -10,5 +10,6 @@ package Modelo;
  * @author Eduarda
  */
 public class Listar {
+    private int codigo;
     
 }
