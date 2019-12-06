@@ -12,7 +12,7 @@ package Modelo;
 public class Cliente {
     private int codigo;
     private String Nome;
-    private String Nasciemnto;
+    private String Nascimento;
     private String RG;
     private String CPF;
     private String Telefone;
@@ -33,12 +33,12 @@ public class Cliente {
         this.Nome = Nome;
     }
 
-    public String getNasciemnto() {
-        return Nasciemnto;
+    public String getNascimento() {
+        return Nascimento;
     }
 
-    public void setNasciemnto(String Nasciemnto) {
-        this.Nasciemnto = Nasciemnto;
+    public void setNascimento(String Nascimento) {
+        this.Nascimento = Nascimento;
     }
 
     public String getRG() {
