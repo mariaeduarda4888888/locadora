@@ -5,10 +5,22 @@
  */
 package DAO;
 
+import Modelo.DVD;
+import java.sql.Connection;
+import java.util.List;
+
 /**
  *
  * @author Eduarda
  */
 public class DVDDAO {
+    public DVDDAO(Connection con) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public List<DVD> ListarDVD() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }
+

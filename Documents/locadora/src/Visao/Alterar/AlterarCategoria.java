@@ -5,6 +5,11 @@
  */
 package Visao.Alterar;
 
+import DAO.CategoriaDAO;
+import DAO.Conexao;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Eduarda
@@ -37,7 +42,7 @@ public class AlterarCategoria extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        OK = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,9 +75,14 @@ public class AlterarCategoria extends javax.swing.JFrame {
 
         jLabel4.setText("Digite o código:");
 
-        jButton4.setBackground(new java.awt.Color(204, 204, 204));
-        jButton4.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        jButton4.setText("OK");
+        OK.setBackground(new java.awt.Color(204, 204, 204));
+        OK.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        OK.setText("OK");
+        OK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OKActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,7 +116,7 @@ public class AlterarCategoria extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(41, 41, 41)
-                                .addComponent(jButton4)))))
+                                .addComponent(OK)))))
                 .addContainerGap(39, Short.MAX_VALUE))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -119,7 +129,7 @@ public class AlterarCategoria extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(OK))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -146,6 +156,25 @@ public class AlterarCategoria extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKActionPerformed
+         String codigo = jTF_Cod.getText();
+      Connection con = Conexao.AbrirConexao();
+      CategoriaDAO sql = new CategoriaDAO(con);
+      int cod = Integer.parseInt(codigo);
+      if (sql.Testar_Categoria(cod) == false) {
+         JOptionPane.showMessageDialog(null, "Codigo não Encontrado no Banco",
+                 "Video Locadora", JOptionPane.ERROR_MESSAGE);
+         Conexao.FecharConexao(con);
+      }
+      if(codigo.equals("")){
+          JOptionPane.showMessageDialog(null,"Digite um Codigo para Atualizar",
+                  "Video Locadora", JOptionPane.WARNING_MESSAGE);
+      }
+      jTF_Cod.setText("");
+      jTF_Nome.setText(""); 
+    }                               
+    }//GEN-LAST:event_OKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,10 +212,10 @@ public class AlterarCategoria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton OK;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -196,4 +225,4 @@ public class AlterarCategoria extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
-}
+
